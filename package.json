@@ -1,0 +1,22 @@
+{
+  "name": "nodestudy3",
+  "version": "1.0.0",
+  "description": "nodeStady",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/River2015/nodeStudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/River2015/nodeStudy/issues"
+  },
+  "homepage": "https://github.com/River2015/nodeStudy#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
