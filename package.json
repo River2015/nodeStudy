@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "task1": "nodemon src/task1_1.js",
-    "task2": "nodemon src/task1_2.js"
+    "task2": "nodemon src/task1_2.js",
+    "task3": "nodemon babel-node src/task1_2.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,10 @@
   },
   "homepage": "https://github.com/River2015/nodeStudy#readme",
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
