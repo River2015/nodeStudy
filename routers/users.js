@@ -5,6 +5,8 @@ const data = require('../bd/users');
 const bodyParser = require('body-parser');
 const HttpStatus = require('http-status-codes');
 const responseMessage = require('../constants/responseMessage');
+const bodyQuerySchema = require('../validations/user');
+const validator = require('express-joi-validation').createValidator({})
 
 app.listen(3000);
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,10 +20,10 @@ const errorHandler = (res) => {
         });
 }
 
-router.post('/user', function(req, res) {
+router.post('/user', validator.body(bodyQuerySchema), function(req, res) {
     data.createUser(req)
     res.status(HttpStatus.OK).send(responseMessage.CREATE);
-})
+});
 
 router.get('/users', function(req, res) {
     const users = data.allUsers()
@@ -38,7 +40,7 @@ router.delete('/user/:id',function(req, res) {
     res.status(HttpStatus.OK).send(responseMessage.DELETE);
 });
 
-router.put('/user/:id', function(req, res) {
+router.put('/user/:id', validator.body(bodyQuerySchema),  function(req, res) {
     const user = data.updateUserById(req);
     (!user) ? errorHandler(res) : res.status(HttpStatus.OK).send(responseMessage.UPDATE);
 })

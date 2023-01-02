@@ -8,7 +8,7 @@ const allUsers = () => {
 
 const filterById = (id) => {
     return data.find((item)=>{
-        return item.id === id
+        return  item.id === id
     });
 }
 
@@ -29,7 +29,9 @@ const deleteUserById = (req) => {
 
 const updateUserById = (req) => {
     const item = filterById(req.body.id);
-    return Object.assign(item, req.body);
+    item['id'] = req.params.id;
+    item['isDeleted'] = false;
+    return { ...item, password: req.body.password, login: req.body.login, age: req.body.age };
 }
 
 const getAutoSuggestUsers = (login, limit) => {
