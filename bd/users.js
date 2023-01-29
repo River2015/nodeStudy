@@ -1,3 +1,4 @@
+// Task 2 without DB
 const uuid = require('uuid');
 
 const data = [];

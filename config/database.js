@@ -13,13 +13,13 @@ const database = new Sequelize(
     }
 );
 
-// sequelize.authenticate().then(
-//     suceess => {
-//         console.log("suceess", suceess);
-//     },
-//     error => {
-//         console.log("error", error);
-//     }
-// );
+database.authenticate().then(
+    suceess => {
+        console.log("suceess", suceess);
+    },
+    error => {
+        console.log("error", error);
+    }
+);
 
 module.exports = database;

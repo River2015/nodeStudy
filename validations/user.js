@@ -1,11 +1,15 @@
 const Joi = require('@hapi/joi');
 
-const validationSchema = Joi.object().keys({
-    login: Joi.string().required(),
-    password: Joi.string()
+const paramsValidationSchema = Joi.object().keys({
+    query: Joi.string().required()
+})
+
+const userValidationSchema = Joi.object().keys({
+    user_login: Joi.string().required(),
+    user_password: Joi.string()
         .regex(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
         .required(),
-    age: Joi.number()
+    user_age: Joi.number()
         .integer()
         .min(4)
         .max(130)
@@ -13,4 +17,4 @@ const validationSchema = Joi.object().keys({
 });
 
 
-module.exports = validationSchema;
+module.exports = { userValidationSchema, paramsValidationSchema };

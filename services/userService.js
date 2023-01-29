@@ -22,8 +22,14 @@ UserService.prototype.updateUser = function(id, payload) {
     return this.model.update(id, payload);
 };
 
-UserService.prototype.searchUser = function(limit, query) {
-    return this.model.findAll(limit, query);
+UserService.prototype.searchUser = function(limit, login) {
+    return this.model.filter(user => {
+        return user.login.indexOf(login) !== -1;
+    }).sort((a, b) => {
+        if (a.login < b.login) return 1
+        if (a.login > b.login) return -1
+        return 0
+    });
 };
 
 module.exports = UserService;

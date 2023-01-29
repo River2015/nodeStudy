@@ -1,3 +1,4 @@
+// Task 2 without DB
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -45,7 +46,7 @@ router.put('/user/:id', validator.body(validationSchema),  function(req, res) {
     (!user) ? errorHandler(res) : res.status(HttpStatus.OK).send(responseMessage.UPDATE);
 })
 
-router.get('users', function(req, res) {
+router.get('/users', function(req, res) {
     const login = req.query.query;
     const limit = req.query.limit || 10;
     (!login) ? errorHandler(res) : res.send(data.getAutoSuggestUsers(login, limit));
