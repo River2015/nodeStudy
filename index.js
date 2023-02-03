@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const userRoutes = require("./routers/userRoutes");
 const usersRoutes = require("./routers/usersRoutes");
 const groupsRoutes = require("./routers/groupsRoutes");
+const userGroupRoutes = require("./routers/userGroupRoutes");
+const sequelize = require('./models').sequelize;
 
 const app = express();
 
@@ -19,11 +21,14 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 app.use('/users', userRoutes);
 app.use('/groups', groupsRoutes);
+//app.use('/usergroup', userGroupRoutes);
 
 app.all("*", (req, res) => {
   return res.status(404).end();
 });
 
-app.listen(PORT,() => {
-  console.log("Server listening on port number ", PORT);
+sequelize.sync().then(function() {
+  app.listen(PORT,() => {
+    console.log("Server listening on port number ", PORT);
+  });
 });
