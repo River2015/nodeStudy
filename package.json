@@ -4,10 +4,6 @@
   "description": "nodeStudy",
   "main": "index.js",
   "scripts": {
-    "task1_1": "nodemon src/task1_1.js",
-    "task1_2": "nodemon src/task1_2.js",
-    "task1_3": "nodemon babel-node src/task1_2.js",
-    "task2": "nodemon routers/users.js",
     "start": "nodemon index.js"
   },
   "repository": {

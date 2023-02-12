@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const groupModel = require('../models/groupModel');
+const model = require('../models');
 const GroupService = require("../services/groupService");
-const groupService = new GroupService(groupModel);
+const groupService = new GroupService(model.Group);
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;

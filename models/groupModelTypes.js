@@ -6,7 +6,7 @@ const group = {
     group_name: { type: Sequelize.TEXT, allowNull: false },
     permissions: {
         type: Sequelize.ARRAY(Sequelize.ENUM({
-            values: ['READ', 'WRITE']})),
+            values: ['READ', 'WRITE', 'EDIT', 'ADMIN']})),
     allowNull: false
     },
 }

@@ -1,11 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require('../config/database');
-// const User = require('./models/userModel');
-// const Group = require('./models/groupModel');
-// const UsersToGroups = require('./models/userGroupModel');
 
-const GroupUsers = db.define(
-    "user_to_group",    {
+const UsersToGroups = db.define(
+    "userstogroups", {
         userId: {
             type: Sequelize.UUID,
             // allowNull: false,
@@ -25,19 +22,6 @@ const GroupUsers = db.define(
     },
     { freezeTableName: true }
 
-);
+)
+module.exports = UsersToGroups;
 
-module.exports = GroupUsers;
-
-// module.exports = (sequelize, DataTypes) => {
-//     const UsersToGroups = sequelize.define(
-//         'users_to_groups',
-//         {
-//             role: {
-//                 type: DataTypes.STRING
-//             }
-//         }
-//     )
-//
-//     return UsersToGroups
-// }

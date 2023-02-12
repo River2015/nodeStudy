@@ -2,14 +2,13 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 const User = require('../models/userModel');
 const Group = require('../models/groupModel');
-const UsersToGroups = require('../models/userGroupModel');
-
+//const UsersToGroups = require('../models/userGroupModel');
 
 // Import models
 const models = {
   User,
   Group,
-  UsersToGroups
+  //UsersToGroups
 }
 
 Object.keys(models).forEach(modelKey => {
@@ -18,7 +17,7 @@ Object.keys(models).forEach(modelKey => {
   }
 })
 
-model.sequelize = sequelize;
-model.Sequelize = Sequelize;
+models.sequelize = sequelize;
+models.Sequelize = Sequelize;
 
-module.exports = model;
+module.exports = models;

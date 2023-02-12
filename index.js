@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 app.use('/users', userRoutes);
 app.use('/groups', groupsRoutes);
-//app.use('/usergroup', userGroupRoutes);
+app.use('/userstogroups', userGroupRoutes);
 
 app.all("*", (req, res) => {
   return res.status(404).end();

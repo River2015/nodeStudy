@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const validator = require("express-joi-validation").createValidator({});
 
-const userModel = require('../models/userModel');
+const model = require('../models');
 const UserService = require("../services/userService");
-const userService = new UserService(userModel);
+const userService = new UserService(model.User);
 
 const userSchema = require("../validations/user").userValidationSchema;
 
