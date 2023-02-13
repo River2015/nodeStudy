@@ -25,8 +25,8 @@ const groupValidationSchema = Joi.object().keys({
 });
 
 const usersToGroupsValidationSchema = Joi.object().keys({
-    group: Joi.string().required(),
-    users: Joi.array().required(),
+    groupId: Joi.string().required(),
+    userId: Joi.array().required(),
 });
 
 
