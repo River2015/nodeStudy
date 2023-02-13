@@ -7,7 +7,7 @@ const userModel = require('../models/userModel');
 const userService = require('../services/userService');
 const UserService = new userService(userModel);
 
-router.get('/', validator.query(paramsSchema), (req, res) => {
+router.get('/', validator.query(paramsSchema), (req, res, next) => {
     const login = req.query.query;
     const limit = req.query.limit;
     UserService.searchUser(login, limit).then(user =>{
@@ -16,7 +16,8 @@ router.get('/', validator.query(paramsSchema), (req, res) => {
         } else {
             res.send(user)
         }
-    });
+    })
+        .catch((err) => { next(err) });
 })
 
 module.exports = router;

@@ -17,7 +17,8 @@ router.post("/",validator.body(usersToGroupsSchema),  (req, res, next) => {
         res.send(group);
     }).catch(error => {
         next(error);
-    });
+    })
+        .catch((err) => { next(err) });
 });
 
 router.all("*", (req, res) => {
