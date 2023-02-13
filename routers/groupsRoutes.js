@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const validator = require("express-joi-validation").createValidator({});
 
 const model = require('../models');
 const GroupService = require("../services/groupService");
 const groupService = new GroupService(model.Group);
+
+const groupSchema = require("../validations/schemas").groupValidationSchema;
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;
@@ -16,7 +19,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", validator.body(groupSchema), (req, res) => {
     const body = req.body;
     groupService.createGroup(body).then(group => res.send(group));
 });
@@ -40,7 +43,7 @@ router.delete("/:id", (req, res) => {
 
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", validator.body(groupSchema), (req, res) => {
     const body = req.body;
     const id = req.params.id;
     groupService.updateGroup(id, body).then(group => {

@@ -6,7 +6,7 @@ const model = require('../models');
 const UserService = require("../services/userService");
 const userService = new UserService(model.User);
 
-const userSchema = require("../validations/user").userValidationSchema;
+const userSchema = require("../validations/schemas").userValidationSchema;
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;
