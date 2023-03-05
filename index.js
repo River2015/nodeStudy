@@ -11,6 +11,8 @@ const sequelize = require('./models').sequelize;
 const logger = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
 const log = require('./middlewares/consoleLogger');
+const checkToken = require('./middlewares/authMiddleware');
+const cors = require('./middlewares/corsMiddleware');
 
 const app = express();
 
@@ -20,16 +22,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
 app.use(log);
+app.use(cors);
 
 app.get('/', (req, res) => {
     logger.info('Server Sent Resp')
     res.send("INSEds");
 });
 
-app.use('/user', userRoutes);
-app.use('/users', userRoutes);
-app.use('/groups', groupsRoutes);
-app.use('/userstogroups', userGroupRoutes);
+app.use('/user',checkToken, userRoutes);
+app.use('/users',checkToken,  userRoutes);
+app.use('/groups',checkToken, groupsRoutes);
+app.use('/userstogroups',checkToken, userGroupRoutes);
 app.use('/auth', authUser);
 
 // TODO: endpoint for checking loggers work
