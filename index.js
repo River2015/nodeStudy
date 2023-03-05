@@ -5,6 +5,7 @@ const userRoutes = require("./routers/userRoutes");
 const usersRoutes = require("./routers/usersRoutes");
 const groupsRoutes = require("./routers/groupsRoutes");
 const userGroupRoutes = require("./routers/userGroupRoutes");
+const authUser = require('./routers/authRoutes')
 const authRoutes = require("./routers/authRoutes");
 const sequelize = require('./models').sequelize;
 const logger = require('./middlewares/logger');
@@ -29,7 +30,7 @@ app.use('/user', userRoutes);
 app.use('/users', userRoutes);
 app.use('/groups', groupsRoutes);
 app.use('/userstogroups', userGroupRoutes);
-app.use('/auth', userGroupRoutes);
+app.use('/auth', authUser);
 
 // TODO: endpoint for checking loggers work
 app.use('/error', () => {

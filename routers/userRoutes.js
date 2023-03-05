@@ -7,8 +7,9 @@ const UserService = require("../services/userService");
 const userService = new UserService(model.User);
 
 const userSchema = require("../validations/schemas").userValidationSchema;
+const checkToken = require('../middlewares/authMiddleware')
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id",checkToken, (req, res, next) => {
     const id = req.params.id;
     userService.getUser(id)
         .then(user => {
@@ -26,7 +27,7 @@ router.post("/", validator.body(userSchema), (req, res, next) => {
     userService.createUser(body).then(user => res.send(user)).catch((err) => { next(err) });;
 });
 
-router.get("/", (req, res, next) => {
+router.get("/", checkToken, (req, res, next) => {
     userService.getAllUser()
         .then(user => {
             if (!user) {
